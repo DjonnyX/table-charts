@@ -1,5 +1,4 @@
 import { ITableMetricColumn } from "./ITableMetricColumn";
-import { createTableCell, createTableRowElement } from "../utils/creators";
 
 export class TableRow {
 
@@ -8,25 +7,27 @@ export class TableRow {
         return this._tblEl;
     }
 
-    constructor() {
-        this._tblEl = createTableRowElement();
+    constructor(private _ctxt: HTMLTableElement) {
+        this._tblEl = document.createElement("tr");
+        this._ctxt.appendChild(this._tblEl);
     }
 
     /**
      * Добавляет данные метрики в таблицу
      */
     public add(options: ITableMetricColumn) {
-        const metricName = createTableCell();
+        const metricName = document.createElement("td");
         metricName.textContent = options.metricName;
         this._tblEl.appendChild(metricName);
 
-        const objectName = createTableCell();
+        const objectName = document.createElement("td");
         objectName.textContent = options.objectName;
         this._tblEl.appendChild(objectName);
 
-        const value = createTableCell();
+        const value = document.createElement("td");
         value.textContent = options.value.toString();
         this._tblEl.appendChild( value);
 
+        return this;
     }
 }

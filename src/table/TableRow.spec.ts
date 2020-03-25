@@ -2,14 +2,14 @@ import {TableRow} from "./TableRow"
 import { MetricTypes, ObjectTypes } from "../types";
 
 describe("Table", () => {
-    const table = new TableRow();
+    const table = new TableRow(window.document.createElement("table"));
     window.document.body.appendChild(table.nativeElement);
   
-    it("must be montained", () => {
+    it("creation", () => {
       expect(window.document.getElementsByTagName("tr").length).toEqual(1);
     });
 
-    it("must contains ", () => {
+    it("add ", () => {
       table.add({
           metricName: MetricTypes[0],
           objectName: ObjectTypes[0],

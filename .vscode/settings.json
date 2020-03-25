@@ -5,7 +5,7 @@
 		"editor.formatOnSave": false
 	},
 	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.defaultFormatter": "vscode.typescript-language-features",
 		"editor.formatOnSave": false
 	},
 	"eslint.autoFixOnSave": true,

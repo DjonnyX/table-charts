@@ -1,0 +1,45 @@
+.wrapper {
+    margin: 20px;
+    position: absolute;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+.content {
+    padding: 20px 0;
+}
+#add-metric.hide {
+    display: none;
+}
+
+#modal {
+    position: absolute;
+    width: 100%;
+    max-width: 200p;
+    height: 32px;
+    background-color: white;
+    z-index: 99999;
+}
+#modal.hide  {
+    display: none;
+}
+
+
+#overlay {
+    pointer-events: none;
+    background-color: rgb(163, 163, 163);
+    z-index: 99998;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+#overlay.hide  {
+    display: none;
+}
