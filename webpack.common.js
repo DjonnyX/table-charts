@@ -17,7 +17,7 @@ module.exports = env => {
       }),
       new HtmlWebpackPlugin({
         template: "./src/index.html",
-        title: "Telegram Web Client",
+        title: "Metrics",
         favicon: "./src/favicon.ico",
       })
     ],
