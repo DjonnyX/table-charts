@@ -1,3 +1,3 @@
-import { Table } from "./tabla";
+import { TableRow } from "./table";
 
-new Table();
+new TableRow();

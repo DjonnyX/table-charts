@@ -1,7 +1,7 @@
-import { Table } from "./Table";
+import { TableRow } from "./TableRow";
 import { ITableMetricColumn } from "./ITableMetricColumn";
 
 export {
-    Table,
+    TableRow,
     ITableMetricColumn
 }

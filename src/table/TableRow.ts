@@ -1,7 +1,7 @@
 import { ITableMetricColumn } from "./ITableMetricColumn";
 import { createTableCell, createTableRowElement } from "../utils/creators";
 
-export class Table {
+export class TableRow {
 
     private _tblEl: HTMLTableRowElement;
     public get nativeElement() {

@@ -1,8 +1,8 @@
-import {Table} from "./Table"
+import {TableRow} from "./TableRow"
 import { MetricTypes, ObjectTypes } from "../types";
 
 describe("Table", () => {
-    const table = new Table();
+    const table = new TableRow();
     window.document.body.appendChild(table.nativeElement);
   
     it("must be montained", () => {
