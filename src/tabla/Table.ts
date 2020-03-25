@@ -13,7 +13,14 @@ export class Table {
      * Добавляет данные метрики в таблицу
      */
     public add(options: ITableMetricColumn) {
-        const cell = createTableCell();
-        
+        const metricName = createTableCell();
+        metricName.textContent = options.metricName;
+
+        const objectName = createTableCell();
+        objectName.textContent = options.metricName;
+
+        const value = createTableCell();
+        value.textContent = options.value.toString();
+
     }
 }

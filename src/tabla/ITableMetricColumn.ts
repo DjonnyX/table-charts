@@ -2,9 +2,9 @@ import { MetricTypes, ObjectTypes } from "../types";
 
 export interface ITableMetricColumn {
     /** строковое поле, нередактируемое */
-    metricName: MetricTypes;
+    metricName: string;
     /** строковое поле, нередактируемое */
-    objectName: ObjectTypes;
+    objectName: string;
     /** range { -2.0 - 2.0) */
-    Value: number;
+    value: number;
 }
