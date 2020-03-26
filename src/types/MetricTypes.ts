@@ -1,4 +1,4 @@
-export enum MetricTypes {
+export const MetricTypes = [
     "Performance",
     "Disk usage",
     "Latency",
@@ -6,4 +6,4 @@ export enum MetricTypes {
     "Bandwidth",
     "Operational costs",
     "Reliability"
-};
+];
