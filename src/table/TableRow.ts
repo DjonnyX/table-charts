@@ -74,7 +74,7 @@ export class TableRow {
         value.appendChild(input);
         this._tblEl.appendChild(value);
 
-        input.addEventListener("change", this._changeValueHandler)
+        input.addEventListener("change", this._changeValueHandler);
 
         return this;
     }

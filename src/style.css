@@ -1,19 +1,26 @@
-
 table {
     border-collapse: collapse;
 }
 
-table, th, td {
-    border: 1px solid #dee2e6;
+table,
+th,
+td {
+    border: 1px solid #e8eaec;
     border-radius: 2px;
+    background: #f9f9f9;
 }
-table:focus, th:focus, td:focus {
-    border: 1px solid #bec6ce;
+
+table:focus,
+th:focus,
+td:focus {
+    border: 1px solid #e8eaec;
+    background: #e8eaec;
 }
 
 .content {
     padding: 20px 0;
 }
+
 #add-metric.hide {
     display: none;
 }
@@ -25,7 +32,8 @@ table:focus, th:focus, td:focus {
     background-color: white;
     z-index: 99999;
 }
-#modal.hide  {
+
+#modal.hide {
     display: none;
 }
 
@@ -39,16 +47,18 @@ table:focus, th:focus, td:focus {
     bottom: 0;
 }
 
-#overlay.hide  {
+#overlay.hide {
     display: none;
 }
 
 .wrapper {
     padding: 20px;
 }
+
 .wrapper-top {
     padding: 20px;
 }
+
 .main-wrapper {
     display: flex;
     justify-content: start;

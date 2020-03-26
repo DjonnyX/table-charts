@@ -30,8 +30,6 @@ export class Chart {
     }
 
     drawChart(values?: ITableMetricColumn[]) {
-        this._canvas.width = this._canvas.height = 400;
-        console.log(values.map(v => v.value))
 
         this._chart.data = {
             labels: values.map(v => v.metricName),
@@ -42,6 +40,8 @@ export class Chart {
                 borderWidth: 1
             }]
         }
+
+        this._chart.update();
     }
 
     getColor(metricName: string): string {
