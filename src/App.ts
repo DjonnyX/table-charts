@@ -6,7 +6,7 @@ export class App {
 
     private _chart: Chart;
 
-    protected rows = new Array<TableRow>();
+    private _rows = new Array<TableRow>();
 
     private _table: HTMLTableElement;
 
@@ -32,6 +32,13 @@ export class App {
         this.closeModal();
     };
 
+    /**
+     * Изменение данных в строке
+     */
+    onChangeRow = () => {
+        this._chart.drawChart(this._rows.map(r => r.values));
+    }
+
     constructor() {
 
         this._table = document.getElementById("tbl") as HTMLTableElement;
@@ -49,11 +56,9 @@ export class App {
         this._btnAddMetric = this._modal.getElementsByClassName("add")[0] as HTMLButtonElement;
         this._btnAddMetric.addEventListener("click", this._btnAddMetricHandler);
 
-        this._chart = new Chart();
-
         this.closeModal();
 
-        this._chart.drawChart(this.rows.map(r => r.values));
+        this._chart = new Chart();
     }
 
     /**
@@ -85,19 +90,12 @@ export class App {
      * заполняетс дефолтовыми знаениями
      */
     addMetricHandler() {
-        const row = new TableRow(this._table).add({
+        const row = new TableRow(this._table, this.onChangeRow).add({
             metricName: MetricTypes[0],
             objectName: ObjectTypes[0],
             value: 0
         });
 
-        this.rows.push(row);
-    }
-
-    /**
-     * Обновление графика
-     */
-    drawChart() {
-        this._chart.drawChart(this.rows.map(r => r.values));
+        this._rows.push(row);
     }
 }

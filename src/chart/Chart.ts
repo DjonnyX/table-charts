@@ -2,44 +2,21 @@ import { Chart as TChart } from "chart.js";
 import { Colors } from "../colors";
 import { ITableMetricColumn } from "src/table";
 
-/**
- * "Performance" - Red,
- * "Disk usage" - Blue,
- * "Latency" - Yellow,
- * "Resource exhaustion" - Green,
- * "Bandwidth - Purple",
- * "Operational costs" - Orange,
- * "Reliability" - Brown
- */
-
 export class Chart {
 
     private _canvas: HTMLCanvasElement;
     private _context: CanvasRenderingContext2D;
+    private _chart: TChart;
 
     constructor() {
         this._canvas = document.createElement("canvas");
-        this._canvas.width = 500;
         this._canvas.classList.add("chart")
         this._context = this._canvas.getContext('2d');
 
         document.body.appendChild(this._canvas);
 
-        this.drawChart();
-    }
-
-    drawChart(values?: ITableMetricColumn[]) {
-        this._canvas.width = this._canvas.height = 400;
-        var myChart = new TChart(this._context, values ? {
+        this._chart = new TChart(this._context, {
             type: 'bar',
-            data: {
-
-                datasets: [{
-                    label: '# of Votes',
-                    data: values.map(v => v.value),
-                    backgroundColor: values.map(v => this.getColor(v.metricName)),
-                }]
-            },
             options: {
                 scales: {
                     yAxes: [{
@@ -49,7 +26,21 @@ export class Chart {
                     }]
                 }
             }
-        } : null);
+        });
+    }
+
+    drawChart(values?: ITableMetricColumn[]) {
+        this._canvas.width = this._canvas.height = 400;
+        console.log(values.map(v => v.value))
+
+        this._chart.data = {
+            labels: values.map(v => v.metricName),
+            datasets: [{
+                data: values.map(v => v.value),
+                backgroundColor: values.map(v => this.getColor(v.metricName)),
+                borderWidth: 1
+            }]
+        }
     }
 
     getColor(metricName: string): string {
@@ -75,7 +66,7 @@ export class Chart {
             case "Reliability":
                 return Colors.Red;
 
-            return Colors.Gray;
+                return Colors.Gray;
         }
     }
 }
