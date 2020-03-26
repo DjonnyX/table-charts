@@ -2,7 +2,7 @@ import { Chart as TChart } from "chart.js";
 import { Colors } from "../colors";
 import { ITableMetricColumn } from "src/table";
 
-export class Chart {
+export class ChartMatrix {
 
     private _canvas: HTMLCanvasElement;
     public get nativeElement() {

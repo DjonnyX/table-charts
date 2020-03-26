@@ -5,6 +5,13 @@ const MAX_VALUE_RANGE = [-2, 2];
 
 export class TableRow {
 
+    static id = 0;
+
+    private _id = TableRow.id;
+    public get id() {
+        return this._id;
+    }
+
     private _tblEl: HTMLTableRowElement;
     public get nativeElement() {
         return this._tblEl;
@@ -24,7 +31,9 @@ export class TableRow {
         if (this._onChange) this._onChange(this._data);
     }
 
-    constructor(private _ctxt: HTMLTableElement, private _onChange?: (data: ITableMetricColumn) => void) {
+    constructor(private _ctxt: HTMLTableElement, private _onChange?: (data: ITableMetricColumn) => void, private _onRemove?: (ctxt: TableRow) => void) {
+        TableRow.id++;
+
         this._tblEl = document.createElement("tr");
         this._ctxt.appendChild(this._tblEl);
 
@@ -49,10 +58,18 @@ export class TableRow {
         if (this._onChange) this._onChange(this._data);
     }
 
+    private _removeRow = () => {
+        this._tblEl.parentNode.removeChild(this._tblEl);
+        if (this._onRemove) this._onRemove(this);
+    }
+
     /**
      * Добавляет данные метрики в таблицу
      */
     public add(options: ITableMetricColumn) {
+
+        TableRow.id++;
+
         const metricName = document.createElement("td");
         metricName.classList.add("metric")
         metricName.appendChild(this.createSelect(MetricTypes, this._chengeSelectMetricNameHandlers));
@@ -76,6 +93,15 @@ export class TableRow {
 
         input.addEventListener("change", this._changeValueHandler);
 
+
+        const remover = document.createElement("td");
+        const btnRemove = document.createElement("button");
+        btnRemove.classList.add("remover");
+        btnRemove.textContent = " X ";
+        btnRemove.addEventListener("click", this._removeRow)
+
+        remover.appendChild(btnRemove);
+        this._tblEl.appendChild(remover);
         return this;
     }
 
@@ -91,4 +117,6 @@ export class TableRow {
         select.addEventListener("change", changeSelectHandlers)
         return select;
     }
+
+    public dispose() { }
 }

@@ -6,6 +6,8 @@ export class App {
 
     private _chart: Chart;
 
+    private _chartMatrix: Chart;
+
     private _rows = new Array<TableRow>();
 
     private _table: HTMLTableElement;
@@ -39,6 +41,15 @@ export class App {
         this._chart.drawChart(this._rows.map(r => r.values));
     }
 
+    _removeRow = (ctxt:TableRow) => {
+        const index = this._rows.indexOf(ctxt);
+        if (index === -1) return;
+
+        this._rows.splice(index, 1);
+
+        this.onChangeRow();
+    }
+
     constructor() {
 
         this._table = document.getElementById("tbl") as HTMLTableElement;
@@ -58,7 +69,15 @@ export class App {
 
         this.closeModal();
 
+        const simpleHeader = document.createElement("h3");
+        simpleHeader.textContent = "Simple";
+        document.body.appendChild(simpleHeader);
         this._chart = new Chart();
+
+        const matrixHeader = document.createElement("h3");
+        matrixHeader.textContent = "Matrix";
+        document.body.appendChild(matrixHeader);
+        this._chartMatrix = new Chart();
     }
 
     /**
@@ -90,7 +109,7 @@ export class App {
      * заполняетс дефолтовыми знаениями
      */
     addMetricHandler() {
-        const row = new TableRow(this._table, this.onChangeRow).add({
+        const row = new TableRow(this._table, this.onChangeRow, this._removeRow).add({
             metricName: MetricTypes[0],
             objectName: ObjectTypes[0],
             value: 0
