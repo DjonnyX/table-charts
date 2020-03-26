@@ -36,6 +36,7 @@ export class Chart {
         this._chart.data = {
             labels: values.map(v => v.metricName),
             datasets: [{
+                label: '# of Votes',
                 data: values.map(v => v.value),
                 backgroundColor: values.map(v => this.getColor(v.metricName)),
                 borderWidth: 1
