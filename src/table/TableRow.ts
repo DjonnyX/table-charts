@@ -1,6 +1,8 @@
 import { ITableMetricColumn } from "./ITableMetricColumn";
 import { MetricTypes, ObjectTypes } from "../types";
 
+const MAX_VALUE_RANGE = [-2, 2];
+
 export class TableRow {
 
     private _tblEl: HTMLTableRowElement;
@@ -9,7 +11,7 @@ export class TableRow {
     }
 
     private _changeValueHandler = (e: any) => {
-        if (e.target.value == 2) e.target.style.borderColor = "red";
+        if (e.target.value == MAX_VALUE_RANGE[0] || e.target.value == MAX_VALUE_RANGE[1]) e.target.style.borderColor = "red";
         else e.target.style.borderColor = "inherit";
     }
 
@@ -34,8 +36,8 @@ export class TableRow {
         const input = document.createElement("input");
         input.type = "number";
         input.step = "0.1";
-        input.min = "-2";
-        input.max = "2";
+        input.min = MAX_VALUE_RANGE[0].toString();
+        input.max = MAX_VALUE_RANGE[1].toString();
         input.value = options.value.toString();
         value.appendChild(input);
         this._tblEl.appendChild(value);

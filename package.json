@@ -16,8 +16,7 @@
   "author": "djonnyx",
   "license": "ISC",
   "description": "",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/polyfill": "^7.6.0",

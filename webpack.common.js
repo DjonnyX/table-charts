@@ -8,7 +8,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = env => {
   return {
     entry: {
-      main: ["@babel/polyfill", "./src/index.ts", "./src/style.css"]
+      main: [
+      "@babel/polyfill",
+      "./src/index.ts",
+      "./src/style.css"]
     },
     plugins: [
       new CleanWebpackPlugin(),

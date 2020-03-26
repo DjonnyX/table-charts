@@ -3,23 +3,24 @@
 
 <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
 
     <div class="main-wrapper">
-        <div class="wrapper">
+        <div id="modal" class="wrapper-top">
             <!-- Диалог -->
-            <div id="modal" >
-                <button class="cancel">Cancel</button>
-                <button class="add">Add</button>
+            <div>
+                <button class="btn btn-light cancel">Cancel</button>
+                <button class="btn btn-primary add">Add</button>
             </div>
         </div>
 
-            <div id="overlay"></div>
+        <div id="overlay"></div>
         <div class="wrapper">
             <!-- Кнопка добавления метрики -->
-            <button id="add-metric">Add metric</button>
+            <button id="add-metric" class="btn btn-primary">Add metric</button>
 
             <!-- таблица -->
             <div class="content">
