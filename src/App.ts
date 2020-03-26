@@ -1,8 +1,10 @@
-
 import { TableRow } from "./table";
+import { Chart } from "./chart";
 import { ObjectTypes, MetricTypes } from "./types";
 
 export class App {
+
+    private _chart: Chart;
 
     protected rows = new Array<TableRow>();
 
@@ -47,7 +49,11 @@ export class App {
         this._btnAddMetric = this._modal.getElementsByClassName("add")[0] as HTMLButtonElement;
         this._btnAddMetric.addEventListener("click", this._btnAddMetricHandler);
 
+        this._chart = new Chart();
+
         this.closeModal();
+
+        this._chart.drawChart(this.rows.map(r => r.values));
     }
 
     /**
@@ -71,7 +77,7 @@ export class App {
         this._overlay.classList.add("hide");
         this._btnACancelMetric.classList.add("hide");
         this._btnAddMetric.classList.add("hide");
-        
+
         this._openModal.classList.remove("hide");
     }
 
@@ -86,5 +92,12 @@ export class App {
         });
 
         this.rows.push(row);
+    }
+
+    /**
+     * Обновление графика
+     */
+    drawChart() {
+        this._chart.drawChart(this.rows.map(r => r.values));
     }
 }

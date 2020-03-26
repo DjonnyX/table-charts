@@ -16,7 +16,10 @@
   "author": "djonnyx",
   "license": "ISC",
   "description": "",
-  "dependencies": {},
+  "dependencies": {
+    "@types/chart.js": "^2.9.16",
+    "chart.js": "^2.9.3"
+  },
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/polyfill": "^7.6.0",
