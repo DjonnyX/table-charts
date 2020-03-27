@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npm run lint && npm-run-all --parallel test-watch serve-dev",
+    "start": "npm run serve-dev",
     "build": "npm run lint && npm run test && npm run assemble-release",
     "lint": "./node_modules/.bin/eslint --ext .ts,.js --quiet src/",
     "lint-fix": "./node_modules/.bin/eslint --ext .ts,.js --quiet --fix src/",
