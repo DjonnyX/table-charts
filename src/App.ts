@@ -29,7 +29,7 @@ export class App {
 
     getMatrixValue(rows: Array<TableRow>) {
         const results = {
-            metricsNames: MetricTypes.map(v => v),
+            metricNames: MetricTypes.map(v => v),
             values: [0, 0, 0, 0, 0, 0, 0]
         };
 
