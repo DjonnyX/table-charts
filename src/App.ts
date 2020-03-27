@@ -1,12 +1,12 @@
-import { TableRow } from "./table";
-import { Chart } from "./chart";
+import { TableRow, ITableMetricColumn } from "./table";
+import { Chart, ChartMatrix } from "./chart";
 import { ObjectTypes, MetricTypes } from "./types";
 
 export class App {
 
     private _chart: Chart;
 
-    private _chartMatrix: Chart;
+    private _chartMatrix: ChartMatrix;
 
     private _rows = new Array<TableRow>();
 
@@ -39,9 +39,24 @@ export class App {
      */
     onChangeRow = () => {
         this._chart.drawChart(this._rows.map(r => r.values));
+
+        const perfomanse =
+            this._chartMatrix.drawChart(this.getMatrixValue(this._rows));
     }
 
-    _removeRow = (ctxt:TableRow) => {
+    getMatrixValue(rows: Array<TableRow>) {
+        const results = {
+            metricsNames: MetricTypes.map(v => v),
+            values: [0,0,0,0,0,0,0]
+        };
+        
+        for (let i = 0, l = rows.length; i < l; i++) {
+            results.values[MetricTypes.indexOf(rows[i].values.metricName)] += rows[i].values.value;
+        }
+        return results;
+    }
+
+    _removeRow = (ctxt: TableRow) => {
         const index = this._rows.indexOf(ctxt);
         if (index === -1) return;
 
@@ -77,7 +92,7 @@ export class App {
         const matrixHeader = document.createElement("h3");
         matrixHeader.textContent = "Matrix";
         document.body.appendChild(matrixHeader);
-        this._chartMatrix = new Chart();
+        this._chartMatrix = new ChartMatrix();
     }
 
     /**
