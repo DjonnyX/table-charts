@@ -67,12 +67,6 @@ td:focus {
     margin: auto;
 }
 
-.main-wrapper {
-    display: flex;
-    justify-content: start;
-    flex-direction: column;
-}
-
 .remover {
     width: 32px;
     height: 32px;
